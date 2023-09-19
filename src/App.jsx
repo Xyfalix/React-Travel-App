@@ -4,7 +4,7 @@ import './App.css'
 import SearchCityInput from './components/SearchCityInput';
 
 
-function App() {
+export default function App() {
   const [searchCity, setSearchCity] = useState(null);
 
   const handleSearch = (newSearchCity) => {
@@ -20,5 +20,3 @@ function App() {
     
   )
 }
-
-export default App

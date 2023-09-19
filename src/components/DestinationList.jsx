@@ -6,7 +6,7 @@ import SearchCityInput from "./SearchCityInput";
 const openCageApiKey = "1b20a807238f4e80b8399d73a2dbd110";
 const geoApifyApiKey = "557ccea3297247b8be351939eeedea0d";
 
-export default function DestinationList() {
+export default function DestinationList({ onUpdatePlaces }) {
     const [destinationListItems, setDestinationListItems] = useState([]);
     const [southwestLat, setSouthwestLat] = useState(null);
     const [southwestLng, setSouthwestLng] = useState(null);
@@ -106,6 +106,8 @@ export default function DestinationList() {
   
         // Update the state with the mapped items
         setDestinationListItems(items);
+
+        onUpdatePlaces(places);
       }
     }, [places]);
   

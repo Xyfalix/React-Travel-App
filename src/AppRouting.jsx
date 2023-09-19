@@ -7,10 +7,9 @@ import DestinationList from "./components/DestinationList";
 
 export default function AppRouting() {
     const [places, setPlaces] = useState(null);
-    const [searchCity, setSearchCity] = useState(null);
-    
-    const updateCity = () => {
-        setSearchCity();
+
+    const updatePlaces = (newPlaces) => {
+        setPlaces(newPlaces)
     }
 
     return (
@@ -18,7 +17,7 @@ export default function AppRouting() {
         <Routes>
             <Route exact path="/" element={<App />} />
             <Route exact path="/destination/:id" element={<DestinationDetail places={places} />} />
-            <Route exact path={`/search/:searchTerm/`} element={<DestinationList/> } />
+            <Route exact path={`/search/:searchTerm/`} element={<DestinationList onUpdatePlaces={updatePlaces}/> } />
         </Routes>
       </div>
 

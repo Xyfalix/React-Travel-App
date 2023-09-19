@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchCityInput ( { onSearch }) {
+    const navigate = useNavigate();
     const [searchCityInputValue, setSearchCityInputValue] = useState('')
 
     const handleInputChange = (event) => {
@@ -10,6 +12,7 @@ export default function SearchCityInput ( { onSearch }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         onSearch(searchCityInputValue);
+        navigate(`/search/${searchCityInputValue}`)
     }
 
     return (

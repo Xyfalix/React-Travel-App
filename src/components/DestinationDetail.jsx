@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-export default function DestinationDetail() {
+export default function DestinationDetail({ places }) {
 
     const { id } = useParams();
     const navigate = useNavigate();

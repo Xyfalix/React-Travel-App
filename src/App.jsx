@@ -7,11 +7,8 @@ import DestinationDetail from './components/DestinationDetail';
 
 const openCageApiKey = "1b20a807238f4e80b8399d73a2dbd110";
 const geoApifyApiKey = "557ccea3297247b8be351939eeedea0d";
-// const tripAdvisorApiKey = "38755A2409AF48AABDC633542654CBA4";
-// const googleMapsApiKey = "AIzaSyBdAsdNj2pYQ2wgY-lmctGfeq8hHYxpVQ4"
 
 function App() {
-
   const [searchCity, setSearchCity] = useState(null);
   const [southwestLat, setSouthwestLat] = useState(null);
   const [southwestLng, setSouthwestLng] = useState(null);
@@ -50,7 +47,7 @@ function App() {
           setSouthwestLng(bounds.southwest.lng);
           setNortheastLat(bounds.northeast.lat);
           setNortheastLng(bounds.northeast.lng);
-        // otherwise return an error to the user.
+        // otherwise return an error to the user reflected in content
         } else {
           setIsError(true);
         }
@@ -97,11 +94,15 @@ function App() {
 
   return (
     <>
-      <h1>React Travel App</h1>
+      <h1>TravelEasy</h1>
       <SearchCityInput onSearch={handleSearch}/>
       <button>View Bucket List</button>
       <h2>Search Results</h2>
       {content}
+      <Routes>
+        <Route exact path="/destination/:id" element={<DestinationDetail />} />
+        <Route exact path={`/search/:searchTerm`} element={<DestinationList places={places} /> } />
+      </Routes>
     </>
   )
 }

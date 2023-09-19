@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import App from "./App";
 import DestinationDetail from "./components/DestinationDetail";
 import DestinationList from "./components/DestinationList";
+import BucketList from "./components/BucketList";
 
 
 export default function AppRouting() {
@@ -17,7 +18,8 @@ export default function AppRouting() {
         <Routes>
             <Route exact path="/" element={<App />} />
             <Route exact path="/destination/:id" element={<DestinationDetail places={places} />} />
-            <Route exact path={`/search/:searchTerm/`} element={<DestinationList onUpdatePlaces={updatePlaces}/> } />
+            <Route exact path="/search/:searchTerm/" element={<DestinationList onUpdatePlaces={updatePlaces}/> } />
+            <Route exact path="/bucketlist" element={<BucketList />} />
         </Routes>
       </div>
 

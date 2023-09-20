@@ -19,12 +19,13 @@ export default function SearchCityInput ( { onSearch }) {
         <>
           <form onSubmit={handleSubmit}>
             <input
+                className="my-5 mx-2 border-solid border-green-600 border-4 px-3 py-1"
                 type="text"
                 placeholder="Type name of city here"
                 value={searchCityInputValue}
                 onChange={handleInputChange}
              />
-            <button type="submit">Search</button>
+            <button className="border-solid border-green-600 border-2 text-gray-50 px-3 py-1" type="submit">Search</button>
           </form>
         </>
     )

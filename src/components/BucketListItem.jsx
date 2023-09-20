@@ -6,10 +6,10 @@ export default function BucketListItem ({ name, country, city, id }) {
     return (
         <>
           <Link to={`/bucketlist/${id}`}>
-            <p>{name}</p>
+            <p>Name: {name}</p>
           </Link>
-          <p>{country}</p>
-          <p>{city}</p>
+          <p>Country: {country}</p>
+          <p>City: {city}</p>
         </>
     )
 }

@@ -60,18 +60,21 @@ export default function BucketListDetail({ bucketListItems }) {
         }, [isDeleteSuccessful, modalIsOpen])
 
     return (
-        <>
-          <h2>Bucket List Item Details</h2>
-          <p>Name: {name}</p>
-          <p>Country: {country}</p>
-          <p>City: {city}</p>
-          <p>Address: {address}</p>
-          <p>Opening Hours: {openingHours} </p>
-          <p>Contact Number: {contactNumber}  </p>
-          <p>Website: {website} </p>
-          <button onClick={handleGoBack}>Back to Bucket List</button>
-          <button onClick={deleteBucketListItem}>Delete Bucket List Item</button>
-
+        <div className="bg-slate-900 min-h-screen flex flex-col items-center justify-center">
+          <h2 className="text-2xl text-gray-50 px-3 py-1 underline">Bucket List Item Details</h2>
+          <div className="bg-white shadow-md rounded-md p-4 m-2 w-96 h-60 flex flex-col justify-center">
+            <p>Name: {name}</p>
+            <p>Country: {country}</p>
+            <p>City: {city}</p>
+            <p>Address: {address}</p>
+            <p>Opening Hours: {openingHours} </p>
+            <p>Contact Number: {contactNumber}  </p>
+            <p>Website: {website} </p>
+          </div>
+          <div>
+            <button className="border-solid border-green-600 border-2 text-gray-50 px-3 py-1 mx-14" onClick={handleGoBack}>Back to Bucket List</button>
+            <button className="border-solid border-green-600 border-2 text-gray-50 px-3 py-1 mx-14" onClick={deleteBucketListItem}>Delete Item</button>
+          </div>
           <ReactModal
             isOpen={modalIsOpen}
             onRequestClose={() => setModalIsOpen(false)}
@@ -82,6 +85,6 @@ export default function BucketListDetail({ bucketListItems }) {
             <button onClick={() => {setModalIsOpen(false);}}>Close</button>
           </ReactModal>
 
-        </>
+        </div>
     );
 }

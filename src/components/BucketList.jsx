@@ -52,13 +52,13 @@ export default function BucketList({ onUpdateBucketList }) {
     }, [bucketListData]);
 
     return (
-      <>
-        <h2>My Bucket List</h2>
+      <div className="bg-slate-900 min-h-screen flex flex-col items-center justify-center">
+        <h2 className="text-3xl text-black-500 font-bold text-gray-50 underline m-8 ">My Bucket List</h2>
         {bucketListItems}
         <Link to={"/"}>
-          <button>Go to Main Page</button>
+          <button className="text-gray-50 border-green-600 border-2 px-3 py-2 m-8 ">Go to Main Page</button>
         </Link>
-      </>
+      </div>
 
     );
 }

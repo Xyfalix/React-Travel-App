@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import DestinationListItem from "./DestinationListItem";
 import SearchCityInput from "./SearchCityInput";
 
@@ -60,7 +60,7 @@ export default function DestinationList({ onUpdatePlaces }) {
   useEffect(() => {
     async function fetchPlaces() {
       if (southwestLng && southwestLat && northeastLng && northeastLat) {
-        const placesApiUrl = `https://api.geoapify.com/v2/places?categories=tourism,natural&filter=rect:${southwestLng},${southwestLat},${northeastLng},${northeastLat}&limit=20&apiKey=${geoApifyApiKey}`;
+        const placesApiUrl = `https://api.geoapify.com/v2/places?categories=tourism,natural&filter=rect:${southwestLng},${southwestLat},${northeastLng},${northeastLat}&limit=10&apiKey=${geoApifyApiKey}`;
         const placesResponse = await fetch(placesApiUrl);
         const placesResponseData = await placesResponse.json();
         console.log(placesResponseData);
@@ -77,13 +77,13 @@ export default function DestinationList({ onUpdatePlaces }) {
 
   // user has not started searching yet
   if (!searchCity) {
-    content = <p>No searches executed yet</p>;
+    content = <p className="text-gray-50 px-3 py-1">No searches executed yet</p>;
   // user keyed in an invalid destination
   } else if (isLoading && isError) {
-    content = <p>You keyed in an invalid destination, please try again.</p>
+    content = <p className="text-gray-50 px-3 py-1">You keyed in an invalid destination, please try again.</p>
   // user keyed in a valid destination and fetchPlaces is running
   } else if (isLoading) {
-    content = <p>Loading your search results...</p>;
+    content = <p className="text-gray-50 px-3 py-1">Loading your search results...</p>;
   // fetchPlaces has completed running, results displayed
   } else if (places.length > 0) {
     content = destinationListItems;
@@ -113,12 +113,15 @@ export default function DestinationList({ onUpdatePlaces }) {
     }, [places]);
   
     return (
-        <div>
-            <h1>TravelEasy</h1>
+        <div className="bg-slate-900 min-h-screen flex flex-col items-center justify-center">
+            <Link to={"/bucketlist"}>
+                <button className="text-gray-50 border-green-600 border-2 px-3 py-1">View Bucket List</button>
+            </Link>
+            <h1 className="text-6xl text-black-500 font-bold text-gray-50 ">TravelEasy</h1>
             <SearchCityInput onSearch={handleSearch}/>
-            <button>View Bucket List</button>
-            <h2>Search Results</h2>
+            <h2 className="text-2xl text-gray-50 px-3 py-1 underline">Search Results</h2>
             {content}
+            
         </div>
     )
   }

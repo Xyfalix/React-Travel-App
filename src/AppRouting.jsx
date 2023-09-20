@@ -22,7 +22,7 @@ export default function AppRouting() {
     return (
       <div>
         <Routes>
-            <Route exact path="/" element={<App />} />
+             <Route exact path="/" element={<App />} />
             <Route exact path="/destination/:id" element={<DestinationDetail places={places} />} />
             <Route exact path="/search/:searchTerm/" element={<DestinationList onUpdatePlaces={updatePlaces}/> } />
             <Route exact path="/bucketlist" element={<BucketList onUpdateBucketList={updateBucketList} />} />

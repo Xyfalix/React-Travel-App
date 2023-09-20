@@ -1,10 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactModal from "react-modal";
 
 export default function BucketListDetail({ bucketListItems }) {
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [modalIsClosed, setModalIsClosed] = useState(false);
+    const [isDeleteSuccessful, setIsDeleteSuccessful] = useState(false);
     const [modalContent, setModalContent] = useState("");
     
     const { id } = useParams();
@@ -40,6 +40,8 @@ export default function BucketListDetail({ bucketListItems }) {
             });
             if (response.ok) {
               setModalContent("Successfully deleted Bucket List Item!")
+              setModalIsOpen(true);
+              setIsDeleteSuccessful(true);
             } else {
               setModalContent("Failed to delete Bucket List Item")
             }
@@ -50,11 +52,13 @@ export default function BucketListDetail({ bucketListItems }) {
         }
       };
 
-      // Perform the redirect after user clicks the Close button on the modal
-      if (modalIsClosed) {
-        navigate("/bucketlist");
-      }
-      
+        // Perform the redirect after user clicks the Close button on the modal
+        useEffect(() => {
+          if (isDeleteSuccessful && !modalIsOpen) {
+            navigate("/bucketlist");
+          }
+        }, [isDeleteSuccessful, modalIsOpen])
+
     return (
         <>
           <h2>Bucket List Item Details</h2>
@@ -72,9 +76,10 @@ export default function BucketListDetail({ bucketListItems }) {
             isOpen={modalIsOpen}
             onRequestClose={() => setModalIsOpen(false)}
             contentLabel="Modal"
+            ariaHideApp={false}
           >
             <p>{modalContent}</p>
-            <button onClick={() => {setModalIsOpen(false); setModalIsClosed(true)}}>Close</button>
+            <button onClick={() => {setModalIsOpen(false);}}>Close</button>
           </ReactModal>
 
         </>

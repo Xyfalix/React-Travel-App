@@ -83,6 +83,7 @@ export default function DestinationDetail({ places }) {
             isOpen={modalIsOpen}
             onRequestClose={() => setModalIsOpen(false)}
             contentLabel="Modal"
+            ariaHideApp={false}
           >
             <p>{modalContent}</p>
             <button onClick={() => setModalIsOpen(false)}>Close</button>

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import BucketListItem from "./BucketListItem";
 
-export default function BucketList() {
+export default function BucketList({ onUpdateBucketList }) {
     const [bucketListData, setBucketListData] = useState(null);
     const [bucketListItems, setBucketListItems] = useState([]);
 
@@ -33,6 +34,7 @@ export default function BucketList() {
           const items = bucketListData.map((bucketListItem) => (
             <BucketListItem
               key={bucketListItem.id}
+              id={bucketListItem.id}
               country={bucketListItem.fields.country}
               city={bucketListItem.fields.city}
               name={bucketListItem.fields.name}
@@ -42,16 +44,20 @@ export default function BucketList() {
               openingHours={bucketListItem.fields.opening_hours}
             />
           ));
-            
+            console.log(items);
             setBucketListItems(items);
-
+            // update bucket list in AppRouting to pass down as a prop to BucketListDetail
+            onUpdateBucketList(bucketListItems)
           }
     }, [bucketListData]);
 
     return (
       <>
-        <p>Bucket List Placeholder</p>
+        <h2>My Bucket List</h2>
         {bucketListItems}
+        <Link to={"/"}>
+          <button>Go to Main Page</button>
+        </Link>
       </>
 
     );

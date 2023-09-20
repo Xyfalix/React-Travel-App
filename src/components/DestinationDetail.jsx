@@ -59,7 +59,7 @@ export default function DestinationDetail({ places }) {
               setModalContent("Failed to add to Bucket List.");
             }
           } catch (error) {
-            setModalContent("A Network error occurred.");
+            setModalContent("A network error occurred.");
           } finally {
             setModalIsOpen(true);
           }

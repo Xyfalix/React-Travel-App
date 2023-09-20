@@ -106,7 +106,8 @@ export default function DestinationList({ onUpdatePlaces }) {
   
         // Update the state with the mapped items
         setDestinationListItems(items);
-
+        
+        // update searched locations in AppRouting to pass down as prop to DestinationDetails
         onUpdatePlaces(places);
       }
     }, [places]);

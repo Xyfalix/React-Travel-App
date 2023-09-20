@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Route, Routes } from 'react-router-dom';
+import { useState } from 'react'
+import { Link } from 'react-router-dom';
 import './App.css'
 import SearchCityInput from './components/SearchCityInput';
 
@@ -15,7 +15,9 @@ export default function App() {
     <>
       <h1>TravelEasy</h1>
       <SearchCityInput onSearch={handleSearch}/>
-      <button>View Bucket List</button>
+      <Link to={"/bucketlist"}>
+        <button>View Bucket List</button>
+      </Link>
     </>
     
   )

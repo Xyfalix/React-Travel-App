@@ -68,11 +68,11 @@ export default function DestinationDetail({ places }) {
             } else {
               setModalContent("Failed to add to Bucket List.");
             }
-          } catch (error) {
+        } catch (error) {
             setModalContent("A network error occurred.");
-          } finally {
+        } finally {
             setModalIsOpen(true);
-          }
+        }
 
     };
     
@@ -90,6 +90,7 @@ export default function DestinationDetail({ places }) {
             <p>Contact Number: {contactNumber}  </p>
             <p>Website: {website} </p>
           </div>
+
           <div>
             <button className="border-solid border-green-600 border-2 text-gray-50 px-3 py-1 mx-4" onClick={addToBucketList}>Add to Bucket List</button>
             <button className="border-solid border-green-600 border-2 text-gray-50 px-3 py-1 mx-4" onClick={handleGoBack}>Back to Search Results</button>

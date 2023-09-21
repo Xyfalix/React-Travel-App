@@ -6,6 +6,7 @@ export default function BucketListDetail({ bucketListItems }) {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [isDeleteSuccessful, setIsDeleteSuccessful] = useState(false);
     const [modalContent, setModalContent] = useState("");
+    const [isChecked, setIsChecked] = useState(false);
     
     const { id } = useParams();
     const airtableBaseUrl = "https://api.airtable.com/v0/appM7fecKbQfZQS1K";
@@ -29,6 +30,38 @@ export default function BucketListDetail({ bucketListItems }) {
         navigate(-1);
     }
 
+    useEffect(() => {
+      const updateBucketListItem = async () => {
+
+        const updateVisited = {
+          "fields": {
+            "visited": isChecked
+          }
+        };
+
+        try {
+          const response = await fetch(`${airtableBaseUrl}/${tableId}/${id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${airtableToken}`,
+            },
+            body: JSON.stringify(updateVisited),
+          });
+
+          if (response.ok) {
+            console.log("Update Successful");
+          } else {
+            console.error("Failed to update");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      updateBucketListItem();
+    }, [isChecked]);
+
     const deleteBucketListItem = async () => {
         try {
             const response = await fetch(`${airtableBaseUrl}/${tableId}/${bucketListItem.id}`, {
@@ -50,7 +83,7 @@ export default function BucketListDetail({ bucketListItems }) {
         } finally {
           setModalIsOpen(true);
         }
-      };
+  };
 
     // Perform a redirect after user clicks the Close button on the modal on a successful delete
     useEffect(() => {
@@ -71,6 +104,18 @@ export default function BucketListDetail({ bucketListItems }) {
             <p>Contact Number: {contactNumber}  </p>
             <p>Website: {website} </p>
           </div>
+
+          <div className="my-4">
+            <label className="text-gray-50">
+                <input 
+                  type="checkbox"
+                  className="mr-2"
+                  checked={isChecked} // Set the checked state based on the state variable
+                  onChange={() => setIsChecked((prev) => !prev)} // Toggle the checkbox state
+                /> Been There Done That!
+            </label>
+          </div>
+
           <div>
             <button className="border-solid border-green-600 border-2 text-gray-50 px-3 py-1 mx-14" onClick={handleGoBack}>Back to Bucket List</button>
             <button className="border-solid border-green-600 border-2 text-gray-50 px-3 py-1 mx-14" onClick={deleteBucketListItem}>Delete Item</button>

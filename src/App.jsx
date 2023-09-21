@@ -19,7 +19,7 @@ export default function App() {
         </Link>
       </div>
       <div className="flex flex-col items-center justify-center col-span-2 row-start-2 row-end-3 pb-20">
-        <h1 className="text-6xl text-black-500 font-bold text-gray-50 text-center">TravelEasy</h1>
+        <h1 className="text-6xl text-black-500 font-bold text-gray-50 text-center">TravelLog</h1>
         <SearchCityInput onSearch={handleSearch}/>
       </div>
     </div>

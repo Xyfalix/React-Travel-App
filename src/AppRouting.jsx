@@ -6,7 +6,6 @@ import DestinationList from "./components/DestinationList";
 import BucketList from "./components/BucketList";
 import BucketListDetail from "./components/BucketListDetail";
 
-
 export default function AppRouting() {
     const [places, setPlaces] = useState(null);
     const [bucketListItems, setBucketListItems] = useState([]);

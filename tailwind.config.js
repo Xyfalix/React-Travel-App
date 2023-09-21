@@ -5,7 +5,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      // custom layout for rows for TravelEasy
+      'layout': '50px minmax(1fr, 1fr)',
+    },
   },
   plugins: [],
 }

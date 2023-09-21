@@ -1,9 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactModal from "react-modal";
 
 export default function DestinationDetail({ places }) {
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [isAddSuccessful, setIsAddSuccessful] = useState(false);
     const [modalContent, setModalContent] = useState("");
 
     const { id } = useParams();
@@ -28,6 +29,13 @@ export default function DestinationDetail({ places }) {
     const handleGoBack = () => {
         navigate(-1);
     }
+
+    // Perform a redirect after user clicks the Close button on the modal on a successful add
+    useEffect(() => {
+        if (isAddSuccessful && !modalIsOpen) {
+        navigate(-1);
+        }
+        }, [isAddSuccessful, modalIsOpen])
 
     const addToBucketList = async () => {
 
@@ -55,6 +63,8 @@ export default function DestinationDetail({ places }) {
         
             if (response.ok) {
               setModalContent("Added to Bucket List successfully!");
+              setModalIsOpen(true);
+              setIsAddSuccessful(true);
             } else {
               setModalContent("Failed to add to Bucket List.");
             }
@@ -63,6 +73,7 @@ export default function DestinationDetail({ places }) {
           } finally {
             setModalIsOpen(true);
           }
+
     };
     
 

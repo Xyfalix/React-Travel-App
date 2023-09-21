@@ -52,12 +52,12 @@ export default function BucketListDetail({ bucketListItems }) {
         }
       };
 
-        // Perform the redirect after user clicks the Close button on the modal
-        useEffect(() => {
-          if (isDeleteSuccessful && !modalIsOpen) {
-            navigate("/bucketlist");
-          }
-        }, [isDeleteSuccessful, modalIsOpen])
+    // Perform a redirect after user clicks the Close button on the modal on a successful delete
+    useEffect(() => {
+      if (isDeleteSuccessful && !modalIsOpen) {
+        navigate("/bucketlist");
+      }
+    }, [isDeleteSuccessful, modalIsOpen])
 
     return (
         <div className="bg-slate-900 min-h-screen flex flex-col items-center justify-center">

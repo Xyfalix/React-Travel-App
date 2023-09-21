@@ -9,6 +9,7 @@ import BucketListDetail from "./components/BucketListDetail";
 export default function AppRouting() {
     const [places, setPlaces] = useState(null);
     const [bucketListItems, setBucketListItems] = useState([]);
+    const [isVisited, setIsVisited] = useState(false);
 
     const updatePlaces = (newPlaces) => {
         setPlaces(newPlaces)

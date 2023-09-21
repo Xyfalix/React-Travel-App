@@ -7,6 +7,7 @@ export default function BucketListDetail({ bucketListItems }) {
     const [isDeleteSuccessful, setIsDeleteSuccessful] = useState(false);
     const [modalContent, setModalContent] = useState("");
     const [isChecked, setIsChecked] = useState(false);
+    const [isCheckboxToggled, setIsCheckboxToggled] = useState(false);
     
     const { id } = useParams();
     const airtableBaseUrl = "https://api.airtable.com/v0/appM7fecKbQfZQS1K";
@@ -20,9 +21,21 @@ export default function BucketListDetail({ bucketListItems }) {
     const country = bucketListItem.fields.country;
     const city = bucketListItem.fields.city;
     const address = bucketListItem.fields.address;
-    const openingHours = bucketListItem.fields.openingHours;
-    const contactNumber = bucketListItem.fields.contactNumber;
+    const openingHours = bucketListItem.fields.opening_hours;
+    const contactNumber = bucketListItem.fields.contact_number;
     const website = bucketListItem.fields.website;
+    console.log(`visited field is ${bucketListItem.fields.visited}`)
+   
+    useEffect(() => {
+      // Initialize isChecked based on bucketListItem.fields.visited when the component mounts
+      if (bucketListItem) {
+        if (bucketListItem.fields.visited) {
+          setIsChecked(true);
+        } else {
+          setIsChecked(false);
+        }
+      }
+    }, []);
 
     const navigate = useNavigate();
     
@@ -30,37 +43,46 @@ export default function BucketListDetail({ bucketListItems }) {
         navigate(-1);
     }
 
-    useEffect(() => {
-      const updateBucketListItem = async () => {
+    const handleCheckboxChange = () => {
+      setIsCheckboxToggled(true);
+      setIsChecked((prev) => !prev);
+    }
 
-        const updateVisited = {
-          "fields": {
-            "visited": isChecked
+    useEffect(() => {
+      if (isCheckboxToggled) {
+        const updateBucketListItem = async () => {
+          const updateVisited = {
+            "fields": {
+              "visited": isChecked
+            }
+          };
+
+          try {
+            const response = await fetch(`${airtableBaseUrl}/${tableId}/${id}`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${airtableToken}`,
+              },
+              body: JSON.stringify(updateVisited),
+            });
+
+            if (response.ok) {
+              console.log("Update Successful");
+            } else {
+              console.error("Failed to update");
+            }
+          } catch (error) {
+            console.error(error);
+          } finally {
+            setIsCheckboxToggled(false);
           }
         };
 
-        try {
-          const response = await fetch(`${airtableBaseUrl}/${tableId}/${id}`, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${airtableToken}`,
-            },
-            body: JSON.stringify(updateVisited),
-          });
-
-          if (response.ok) {
-            console.log("Update Successful");
-          } else {
-            console.error("Failed to update");
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      };
-
-      updateBucketListItem();
-    }, [isChecked]);
+        updateBucketListItem();
+      }
+    }, [isCheckboxToggled]);
+    
 
     const deleteBucketListItem = async () => {
         try {
@@ -110,8 +132,8 @@ export default function BucketListDetail({ bucketListItems }) {
                 <input 
                   type="checkbox"
                   className="mr-2"
-                  checked={isChecked} // Set the checked state based on the state variable
-                  onChange={() => setIsChecked((prev) => !prev)} // Toggle the checkbox state
+                  checked={isChecked} 
+                  onChange={handleCheckboxChange}
                 /> Been There Done That!
             </label>
           </div>

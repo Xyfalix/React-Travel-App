@@ -44,6 +44,7 @@ export default function BucketList({ onUpdateBucketList }) {
               contactNumber={bucketListItem.fields.contact_number}
               website={bucketListItem.fields.website}
               openingHours={bucketListItem.fields.opening_hours}
+              visited={bucketListItem.fields.visited}
             />
           ));
             console.log(items);

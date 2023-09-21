@@ -80,9 +80,10 @@ export default function BucketListDetail({ bucketListItems }) {
             onRequestClose={() => setModalIsOpen(false)}
             contentLabel="Modal"
             ariaHideApp={false}
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-gray-50 p-4 max-w-5xl max-h-5xl overflow-auto rounded-lg shadow-md flex flex-col items-center"
           >
             <p>{modalContent}</p>
-            <button onClick={() => {setModalIsOpen(false);}}>Close</button>
+            <button className="text-gray-50 hover:text-blue-700 border-green-600 border-2 px-3 mt-5" onClick={() => {setModalIsOpen(false);}}>Close</button>
           </ReactModal>
 
         </div>

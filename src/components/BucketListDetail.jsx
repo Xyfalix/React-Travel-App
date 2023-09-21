@@ -62,7 +62,7 @@ export default function BucketListDetail({ bucketListItems }) {
     return (
         <div className="bg-slate-900 min-h-screen flex flex-col items-center justify-center">
           <h2 className="text-2xl text-gray-50 px-3 py-1 underline">Bucket List Item Details</h2>
-          <div className="bg-white shadow-md rounded-md p-4 m-2 w-96 h-60 flex flex-col justify-center">
+          <div className="bg-white shadow-md rounded-md p-4 m-2 w-96 min-h-fit flex flex-col justify-center">
             <p>Name: {name}</p>
             <p>Country: {country}</p>
             <p>City: {city}</p>

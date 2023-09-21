@@ -70,7 +70,7 @@ export default function DestinationDetail({ places }) {
         <div className="bg-slate-900 min-h-screen flex flex-col items-center justify-center">
           
           <h2 className="text-2xl text-gray-50 px-3 py-1 underline">Destination Details</h2>
-          <div className="bg-white shadow-md rounded-md p-4 m-2 w-96 h-60 flex flex-col justify-center"> 
+          <div className="bg-white shadow-md rounded-md p-4 m-2 w-96 min-h-fit flex flex-col justify-center"> 
             <p>Name: {name}</p>
             <p>Country: {country}</p>
             <p>City: {city}</p>
@@ -80,8 +80,8 @@ export default function DestinationDetail({ places }) {
             <p>Website: {website} </p>
           </div>
           <div>
-            <button className="border-solid border-green-600 border-2 text-gray-50 px-3 py-1 mx-5" onClick={addToBucketList}>Add to Bucket List</button>
-            <button className="border-solid border-green-600 border-2 text-gray-50 px-3 py-1 mx-5" onClick={handleGoBack}>Back to Search Results</button>
+            <button className="border-solid border-green-600 border-2 text-gray-50 px-3 py-1 mx-4" onClick={addToBucketList}>Add to Bucket List</button>
+            <button className="border-solid border-green-600 border-2 text-gray-50 px-3 py-1 mx-4" onClick={handleGoBack}>Back to Search Results</button>
           </div>
           <ReactModal
             isOpen={modalIsOpen}

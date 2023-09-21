@@ -60,7 +60,7 @@ TravelLog serves as an app where users can search for attractions by city and sa
 
 ## Getting Started
 
-- [TravelLog App](https://react-travel-app-zeta.vercel.app/)
+### [TravelLog App](https://react-travel-app-zeta.vercel.app/)
 - [Wireframe Draft (Project Planning)](https://miro.com/app/board/uXjVMknY8Us=/?share_link_id=990921427117)
 
 ## Next Steps

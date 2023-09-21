@@ -46,8 +46,9 @@ export default function BucketList({ onUpdateBucketList }) {
           ));
             console.log(items);
             setBucketListItems(items);
-            // update bucket list in AppRouting to pass down as a prop to BucketListDetail
-            onUpdateBucketList(bucketListItems)
+            
+            // update bucket list data in AppRouting to pass down as a prop to BucketListDetail
+            onUpdateBucketList(bucketListData)
           }
     }, [bucketListData]);
 
@@ -56,7 +57,7 @@ export default function BucketList({ onUpdateBucketList }) {
         <h2 className="text-3xl text-black-500 font-bold text-gray-50 underline m-8 ">My Bucket List</h2>
         {bucketListItems}
         <Link to={"/"}>
-          <button className="text-gray-50 border-green-600 border-2 px-3 py-2 m-8 ">Go to Main Page</button>
+          <button className="text-gray-50 border-green-600 border-2 px-3 py-2 m-4 ">Go to Main Page</button>
         </Link>
       </div>
 

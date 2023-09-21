@@ -13,15 +13,15 @@ export default function BucketListDetail({ bucketListItems }) {
     const airtableToken = "patmFkDXfa3orGMQc.db60d07c85760f1a9468fd82ce261852cf1097128e14787a1b59036f6ff92d7b";
     
     console.log(bucketListItems);
-    const bucketListItem = bucketListItems.find((bucketListItem) => bucketListItem.props.id === id);
+    const bucketListItem = bucketListItems.find((bucketListItem) => bucketListItem.id === id);
     console.log(`Bucket List Item is ${bucketListItem}`);
-    const name = bucketListItem.props.name;
-    const country = bucketListItem.props.country;
-    const city = bucketListItem.props.city;
-    const address = bucketListItem.props.address;
-    const openingHours = bucketListItem.props.openingHours;
-    const contactNumber = bucketListItem.props.contactNumber;
-    const website = bucketListItem.props.website;
+    const name = bucketListItem.fields.name;
+    const country = bucketListItem.fields.country;
+    const city = bucketListItem.fields.city;
+    const address = bucketListItem.fields.address;
+    const openingHours = bucketListItem.fields.openingHours;
+    const contactNumber = bucketListItem.fields.contactNumber;
+    const website = bucketListItem.fields.website;
 
     const navigate = useNavigate();
     
@@ -31,7 +31,7 @@ export default function BucketListDetail({ bucketListItems }) {
 
     const deleteBucketListItem = async () => {
         try {
-            const response = await fetch(`${airtableBaseUrl}/${tableId}/${bucketListItem.props.id}`, {
+            const response = await fetch(`${airtableBaseUrl}/${tableId}/${bucketListItem.fields.id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

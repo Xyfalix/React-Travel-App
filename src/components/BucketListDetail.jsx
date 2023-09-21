@@ -31,7 +31,7 @@ export default function BucketListDetail({ bucketListItems }) {
 
     const deleteBucketListItem = async () => {
         try {
-            const response = await fetch(`${airtableBaseUrl}/${tableId}/${bucketListItem.fields.id}`, {
+            const response = await fetch(`${airtableBaseUrl}/${tableId}/${bucketListItem.id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

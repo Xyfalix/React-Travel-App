@@ -51,6 +51,15 @@ TravelLog serves as an app where users can search for attractions by city and sa
 
 ## Screenshot(s)
 
+<img width="500" height="500" alt="Screenshot 2023-09-22 at 9 19 39 AM" src="https://github.com/Xyfalix/React-Travel-App/assets/129175727/6d73400f-c45d-4075-81d2-0baa89b10ad2">
+
+<img width="500" height="500" alt="Screenshot 2023-09-22 at 9 22 55 AM" src="https://github.com/Xyfalix/React-Travel-App/assets/129175727/e5253906-e972-4c2c-9f66-6bbb15e91bdd">
+
+<img width="500" height="500" alt="Screenshot 2023-09-22 at 9 23 22 AM" src="https://github.com/Xyfalix/React-Travel-App/assets/129175727/47a2496e-5270-40c4-a4b7-d125f4caa17b">
+
+<img width="500" height="500" alt="Screenshot 2023-09-22 at 9 23 39 AM" src="https://github.com/Xyfalix/React-Travel-App/assets/129175727/5db41560-4d94-4a80-b74f-f59649a447ad">
+
+
 ## Technologies Used
 
 - React with Vite

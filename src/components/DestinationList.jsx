@@ -120,7 +120,7 @@ export default function DestinationList({ onUpdatePlaces }) {
                 </Link>
             </div>
             <div className="flex flex-col items-center justify-center col-span-2 row-start-2 row-end-3 pb-20">
-                <h1 className="text-6xl text-black-500 font-bold text-gray-50 ">TravelEasy</h1>
+                <h1 className="text-6xl text-black-500 font-bold text-gray-50 ">TravelLog</h1>
                 <SearchCityInput onSearch={handleSearch}/>
                 <h2 className="text-2xl text-gray-50 px-3 py-1 underline">Search Results</h2>
                 {content}
